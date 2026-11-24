@@ -1,0 +1,162 @@
+ group · HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Study Group Discussion</title>
+ 
+  <!-- CSS: controls how the page looks -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f4f8;
+      margin: 0;
+      background-image: url("p.gpg.jpeg");
+    }
+ 
+    header {
+      background-color: #1b2a41;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+ 
+    nav {
+      background-color:black;
+      text-align: center;
+    }
+ 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 1px 20px;
+      display: inline-block;
+    }
+ 
+    nav a:hover {
+      background-color: #1b2a41;
+    }
+ 
+    .container {
+      width: 80%;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+ 
+    .box {
+      background-color: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 60px;
+    }
+ 
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+ 
+    button {
+      background-color: #1b2a41;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+ 
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: gray;
+    }
+  </style>
+</head>
+ 
+<body>
+ 
+  <!-- HEADER: title of the website -->
+  <header>
+    <h1>Online Study Group</h1>
+    <p>Ask questions. Share answers. Learn together.</p>
+  </header>
+ 
+  <!-- NAVIGATION: links that jump to sections of the page -->
+  <nav>
+    <a href="#groups">Groups</a>
+    <a href="#discuss">Discussion</a>
+    <a href="#about">About</a>
+    
+  </nav>
+ 
+  <div class="container">
+ 
+    <!-- SECTION 1: list of study groups -->
+    <div class="box" id="groups">
+      <h2>Study Groups</h2>
+      <ul>
+        <li>Data Structures</li>
+        <li>Mathematics</li>
+        <li>Database Management</li>
+      </ul>
+    </div>
+ 
+    <!-- SECTION 2: form to post a new question -->
+    <div class="box" id="discuss">
+      <h2>Post a Question</h2>
+      <input type="text" id="name" placeholder="Your name">
+      <textarea id="message" rows="4" placeholder="Write your question..."></textarea>
+      <textarea id="message" rows="5" placeholder="Write your answers..."></textarea>
+      <button onclick="addPost()">Post</button>
+    </div>
+   
+    <!-- SECTION 3: posts appear here -->
+    <div id="posts">
+      <div class="box">
+        <strong>Riya</strong>
+        <p>What is the difference between a stack and a queue?</p>
+      </div>
+    </div>
+ 
+    <!-- SECTION 4: about -->
+    <div class="box" id="about">
+      <h2>About</h2>
+      <p>This website helps students discuss topics and solve doubts together.</p>
+    </div>
+ 
+  </div>
+ 
+  <footer>
+    College Project - Online Discussion Platform
+  </footer>
+ 
+  <!-- JavaScript: makes the page work when the button is clicked -->
+  <script>
+    function addPost() {
+      // 1. Get what the user typed
+      var name = document.getElementById("name").value;
+      var message = document.getElementById("message").value;
+ 
+      // 2. Check that both fields are filled
+      if (name == "" || message == "") {
+        alert("Please enter your name and question!");
+        return;
+      }
+ 
+      // 3. Create a new box for the post
+      var newPost = document.createElement("div");
+      newPost.className = "box";
+      newPost.innerHTML = "<strong>" + name + "</strong><p>" + message + "</p>";
+ 
+      // 4. Add the new post to the page
+      document.getElementById("posts").appendChild(newPost);
+ 
+      // 5. Clear the form
+      document.getElementById("name").value = "";
+      document.getElementById("message").value = "";
+    }
+  </script>
+ 
+</body>
+</html>
